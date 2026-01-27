@@ -1,8 +1,23 @@
 # Python Venv
-.venv
+.venv/
+env/
+venv/
+
+# Python cache
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Pycharm IDE
 .idea
 
 # My C++ tools
 _MyC++Tools
+runserver
+
+# Log file
+*.log
+
+# SQLite file
+db.sqlite3
