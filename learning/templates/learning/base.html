@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title> {% block title %}学习笔记{% endblock title %} </title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <p>
+        <a href="{% url 'learning:index' %}"> 学习笔记 </a>
+        -
+        <a href="{% url 'learning:topics' %}"> 主题 </a>
+    </p>
+    {% block content %}{% endblock content %}
+</body>
+</html>
