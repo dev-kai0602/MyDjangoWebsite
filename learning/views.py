@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import Topic, Entry
-from forms import TopicForm
+from .forms import TopicForm, EntryForm
 
 def index(request):
     """ 学习笔记主页 """
@@ -32,3 +32,20 @@ def new_topic(request):
     
     context = {'form': form}
     return render(request, 'learning/new_topic.html', context)
+
+def new_entry(request, top_ic):
+    """ 在特定主题中添加新条目 """
+    topic = Topic.objects.get(id=top_ic)
+    
+    if request.method != 'POST':
+        form = EntryForm()
+    else:
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.topic = topic
+            new_entry.save()
+            return redirect('learning/new_entry.html', topic_id=top_ic)
+    
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning/new_entry.html', context)
