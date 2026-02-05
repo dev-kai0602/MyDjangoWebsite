@@ -21,7 +21,7 @@ def topic(request, topic_id):
     return render(request, 'learning/topic.html', context)
 
 def new_topic(request):
-    """添加新主题"""
+    """ 添加新主题 """
     if request.method != 'POST':
         form = TopicForm()
     else:
